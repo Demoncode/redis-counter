@@ -7,10 +7,6 @@ SEPARATOR = ':'
 
 
 def get_key(name, start, interval, namespace=NAMESPACE, separator=SEPARATOR):
-    # Actually this should be fine
-    # if separator in name:
-    #     raise ValueError('Counter name cannot contain separator %s', separator)
-
     end = start + interval
     return separator.join(map(str, [namespace, name, int(start), int(end)]))
 
@@ -109,7 +105,6 @@ def get_top_entries(
     aggregate_key = get_key_by_datetime(
         name, start, aggregate_interval, namespace, separator)
 
-    #not tested
     if 'BasePipeline' not in [c.__name__ for c in redis.__class__.__bases__]:
         redis = redis.pipeline()
 
