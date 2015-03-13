@@ -9,6 +9,6 @@ setup(
     description='Time window counters in Python.',
     long_description=open('README.md').read(),
     packages=['redis_counter'],
-    zip_safe=True,
+    zip_safe=False,
     license='BSD',
 )
