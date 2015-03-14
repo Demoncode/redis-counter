@@ -17,6 +17,7 @@ ex: `counter:my-counter:1420070400:1420156800`
 
 ```
 import datetime
+import redis
 import redis_counter
 
 
