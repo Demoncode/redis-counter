@@ -1,5 +1,5 @@
 # redis-counter
-Time window counters in Python
+Time windowed counters in Python
 
 
 
