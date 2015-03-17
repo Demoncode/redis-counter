@@ -98,7 +98,8 @@ def get_scalar_aggregate(
 
 def get_top_entries(
         redis, name, start, end, interval, limit=10,
-        offset=0, cache=0, namespace=NAMESPACE, separator=SEPARATOR):
+        offset=0, cache=0, min_score='-inf', max_score='+inf',
+        namespace=NAMESPACE, separator=SEPARATOR):
     keys = get_keys_for_timerange(
         name, start, end, interval, namespace, separator)
     aggregate_interval = int((end - start).total_seconds())
@@ -110,7 +111,7 @@ def get_top_entries(
 
     redis.zunionstore(aggregate_key, keys)
     redis.zrevrangebyscore(
-        aggregate_key, '+inf', '-inf', start=offset, num=limit,
+        aggregate_key, max_score, min_score, start=offset, num=limit,
         withscores=True)
     if cache > 0:
         redis.expire(aggregate_key, cache)
