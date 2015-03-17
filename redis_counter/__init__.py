@@ -61,14 +61,14 @@ def clear_counts_for_name(
 def incr_counter(redis, key, incr=1, ttl=None):
     redis.incr(key, 1)
     if ttl is not None:
-        expire_seconds = get_key_expiry_time(key)
+        expire_seconds = get_key_expiry_time(key, ttl)
         redis.expire(key, expire_seconds)
 
 
 def incr_set(redis, key, object_name, incr=1, ttl=None):
     redis.zincrby(key, object_name, incr)
     if ttl is not None:
-        expire_seconds = get_key_expiry_time(key)
+        expire_seconds = get_key_expiry_time(key, ttl)
         redis.expire(key, expire_seconds)
 
 
