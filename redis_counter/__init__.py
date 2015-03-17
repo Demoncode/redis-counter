@@ -47,12 +47,12 @@ def get_quantised_timestamp(dt, interval):
 
 def clear_counts_for_name(
         redis, name, namespace=NAMESPACE, separator=SEPARATOR):
-
+    keys = redis.keys(separator.join(map(str, [namespace, name, '*'])))
     if 'BasePipeline' not in [c.__name__ for c in redis.__class__.__bases__]:
         redis = redis.pipeline()
 
     # TODO: performance improvement over using keys()?
-    for key in redis.keys(separator.join(map(str, [namespace, name, '*']))):
+    for key in keys:
         redis.delete(key)
 
     redis.execute()
