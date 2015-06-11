@@ -14,7 +14,10 @@ setup(
     author='Smesh',
     url='https://github.com/Demoncode/redis-counter',
     description='Time window counters in Python.',
-    long_description=(read('README.md')),
+    long_description=(
+        read('README.md') + '\n\n' +
+        read('HISTORY.md') + '\n\n' +
+        read('AUTHORS.md')),
     packages=['redis_counter'],
     zip_safe=False,
     license='BSD',
