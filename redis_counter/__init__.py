@@ -59,7 +59,7 @@ def clear_counts_for_name(
 
 
 def incr_counter(redis, key, incr=1, ttl=None):
-    redis.incr(key, 1)
+    redis.incr(key, incr)
     if ttl is not None:
         expire_seconds = get_key_expiry_time(key, ttl)
         redis.expire(key, expire_seconds)
