@@ -13,7 +13,7 @@ Keys are in the format `counter:counter-name:start_timestamp:end_timestamp`,
 
 ex: `counter:my-counter:1420070400:1420156800`
 
-####Incrementing counters
+#### Incrementing counters
 
 ```
 import datetime
@@ -32,7 +32,7 @@ redis_counter.incr_set(redis, key, 'item-name', incr=3)
 
 ```
 
-####Aggregating counts
+#### Aggregating counts
 
 ```
 TODO
